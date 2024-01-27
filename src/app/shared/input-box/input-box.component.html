@@ -1,0 +1,23 @@
+<label [htmlFor]="forName">{{lable}}</label>
+<input [formControl]="control" [id]="forName" [ngClass]="{'is-invalid':control.errors && control.touched}" class="form-control" />
+<ng-container *ngIf="control.errors && control.touched">
+    <div *ngIf="control.errors['required']">
+        <small>Required</small>
+    </div>
+    <div *ngIf="control.errors['minlength']">
+        <small>Required Minimum length {{control.errors['minlength'].requiredLength}} You entered {{control.errors['minlength'].actualLength}}</small>
+    </div>
+    <div *ngIf="control.errors['maxlength']">
+        <small>Required maximum length {{control.errors['maxlength'].requiredLength}} You entered {{control.errors['maxlength'].actualLength}}</small>
+    </div>
+    <div *ngIf="control.errors['pattern']">
+        <small>Not valid username</small>
+    </div>
+    <div *ngIf="control.errors['nonUniqueUsername']">
+        <small>Username not available</small>
+    </div>
+    <div *ngIf="control.errors['noConnection']">
+        <small>Username not able to check</small>
+    </div>
+</ng-container>
+
